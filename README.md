@@ -23,7 +23,7 @@ vi /etc/apache2/sites-available/web-file-listing.conf
 ```
 <VirtualHost *:80>
 
-  # Change to your needs
+	# Change to your needs
 	ServerName download.example.com
 	ServerAdmin ricardo.schutz@gmail.com
 	DocumentRoot /var/www/web-file-listing
@@ -33,7 +33,7 @@ vi /etc/apache2/sites-available/web-file-listing.conf
 	DirectoryIndex index.html
 	FallbackResource /index.html
 	
-  <Directory /var/www/web-file-listing/>
+	<Directory /var/www/web-file-listing/>
 		Options +ExecCGI
 		AddHandler cgi-script .py
 	</Directory>
