@@ -1,0 +1,121 @@
+/* Variables */
+:root {
+    --color-main: #CCCCCC;
+    --color-soft: #999999;
+    --color-softer: #EEEEEE;
+    --color-default: #777777;
+    --default-shadow: 0 0 3px rgba(0,0,0,0.6);
+    --border-menu-separator: 1px solid rgba(0,0,0,0.1);
+    --border-menu-end: 1px solid rgba(0,0,0,0.4);
+}
+
+/* Animation */
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+/* CSS */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100%;
+}
+.navbar {
+    min-height: 45px;
+    background: var(--color-main);
+    color: white;
+    line-height: 45px;
+    letter-spacing: 2px;
+    font-size: larger;
+    padding: 0 10px;
+    box-shadow: var(--default-shadow);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    margin-bottom: 15px;
+}
+.navbar a {
+    float: right;
+    padding: 0px 5px;
+    margin-top: -3px;
+}
+.navbar a img {
+    height: 50px;
+}
+h2 {
+    text-transform: uppercase;
+    font-size: x-small;
+    padding: 0 5px;
+    color: var(--color-soft);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+div#list-controller {
+    overflow: auto;
+    max-height: 0px;
+    transition: none;
+}
+div#list-controller.shown {
+    max-height: calc(100% - 81px);
+    transition: all .35s ease;
+}
+li a, li div {
+    padding: 12px;
+    border-bottom: var(--border-menu-separator);
+    display: block;
+    color: var(--color-default);
+}
+li:last-of-type a, li:last-of-type div {
+    border-bottom: var(--border-menu-end);
+}
+li a i, li div i {
+    font-size: x-large;
+    margin-right: 15px;
+    min-width: 28px;
+    text-align: center;
+    color: var(--color-main);
+}
+li a span, li div span {
+    display: inline-block;
+    line-height: 26px;
+}
+div.loading {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 100px;
+    text-align: center;
+}
+div.loading i {
+    font-size: 21px;
+    width: 21px;
+    height: 20px;
+    animation: spin 1s infinite steps(8);
+    display: inline-block;
+}
+.dir {
+    background-color: var(--color-softer);
+}
+div.empty-folder {
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: var(--border-menu-separator);
+}
+div.empty-folder span {
+    position: absolute;
+    margin-left: -65px;
+    margin-top: 1px;
+    padding: 0 10px;
+    background-color: white;
+    color: var(--color-soft);
+    font-size: 14px;
+    letter-spacing: 1px;
+}

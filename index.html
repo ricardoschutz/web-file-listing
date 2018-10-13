@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="{{ appColor }}">
+  <title>{{ text.appTitle }}</title>
+  <script src="lib/angular.min.js"></script>
+  <script src="app/app.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="lib/fa.css">
+  <style id="styleVariables"></style>
+</head>
+<body>
+	<div class="navbar">{{ text.appTitle }}<a href="https://www.rascode.com.br"><img src="img/Icone-Rascode-02-250x250.png"/></a></div>
+	<h2>{{ text.files }}</h2>
+	<div ng-controller="ListController" id="list-controller" ng-class="{ shown: !loading }">
+		<ul>
+			<li ng-click="back()" ng-if="hasParent(path)">
+				<div class="dir">
+					<i class="fas fa-arrow-left"></i>
+				</div>
+			</li>
+			<div class="empty-folder" ng-if="files.length < 1 && !loading"><span>{{ text.emptyFolder }}</span></div>
+			<li ng-repeat="file in files | filter:{ isDir : true } | orderBy: 'name'">
+				<div ng-click="openFolder(file)" class="dir">
+					<i class="fas fa-folder"></i><span>{{file.name}}</span>
+				</div>
+			</li>
+			<li ng-repeat="file in files | filter:{ isDir : false} | orderBy: 'name'">
+				<a href="{{ './files/' + path.join('/') + '/' + file.name }}">
+					<i class="fas fa-file"></i><span>{{ file.name }}</span>
+				</a>
+			</li>
+		</ul>
+		<div class="loading" ng-show="loading"><i class="fas fa-spinner"></i></div>
+	</div>
+</body>
+</html>
